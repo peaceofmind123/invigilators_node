@@ -1,2 +1,1 @@
-# invigilators_node
-# invigilators_node
+nodejs implementation of invigilators project
