@@ -1,5 +1,4 @@
 const express = require('express');
-const sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cookieParser = requier('cookie-parser');
 const morgan = require('morgan');
@@ -11,7 +10,7 @@ app.use(bodyParser.json());
 app.set('port',process.env.PORT || 8000);
 
 
-app.get('/api',)
+app.use('/api',restRouter);
 //the 500 handler
 app.use((err,req,res,next)=>{
     res.status(500);
@@ -29,4 +28,4 @@ app.use((req,res,next)=>{
 
 app.listen(app.get('port'),()=>{
     console.log(`Server started on port ${app.get('port')}`);
-})
+});
