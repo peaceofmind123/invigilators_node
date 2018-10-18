@@ -1,5 +1,5 @@
 const express = require('express'); 
-let router = express.router();
+let router = express.Router();
 
 
 module.exports = router;

@@ -1,16 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = requier('cookie-parser');
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const app = express();
 const restRouter = require('./rest/router');
+const path = require('path');
+app.set('port',process.env.PORT || 8000);
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.set('port',process.env.PORT || 8000);
 
+app.use(express.static(path.join(__dirname,'frontend','dist','frontend')));
 
 app.use('/api',restRouter);
+
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'frontend','dist','frontend/index.html'));
+});
+
 //the 500 handler
 app.use((err,req,res,next)=>{
     res.status(500);

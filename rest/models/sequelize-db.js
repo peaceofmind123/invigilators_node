@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = new Sequelize('invigilators', 'postgres', require('../../secrets').passwordDB, {
   host: 'localhost',
   dialect: 'postgres',
 
@@ -10,8 +10,6 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     idle: 10000
   },
 
-  // SQLite only
-  storage: 'path/to/database.sqlite',
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: false
