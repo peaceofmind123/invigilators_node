@@ -1,8 +1,15 @@
+/* class Meta:
+unique_together = (('name','examCenter'),)
+name = models.CharField(max_length=255,blank=False)
+capacity = models.IntegerField(blank=False)
+examCenter = models.ForeignKey(ExamCenter,on_delete=models.CASCADE,related_name="examRooms")
+ */
+
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
-const examRoom = db.define('room',{
+const ExamRoom = db.define('examRoom',{
     name: Sequelize.STRING,
     capacity: Sequelize.INTEGER
 });
 
-module.exports = examRoom;
+module.exports = ExamRoom;
