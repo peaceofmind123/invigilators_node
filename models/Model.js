@@ -23,7 +23,7 @@ ExamDate.hasMany(ExamInstance,{foreignKey:'ed_date',sourceKey:'date'});
 ExamRoom.hasMany(ExamInstance,{foreignKey:'er_name',sourceKey:'name'});
 ExamInstance.belongsToMany(Invigilator,{through:InvigilatorAssignment,foreignKey:'ei_id',otherKey:'i_dob'});
 Invigilator.belongsToMany(ExamInstance,{through:InvigilatorAssignment,foreignKey:'i_dob',otherKey:'ei_id'});
-
+db.sync();
 module.exports = {
     ExamCenter:ExamCenter,
     Exam:Exam,

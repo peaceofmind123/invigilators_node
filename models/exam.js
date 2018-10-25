@@ -11,4 +11,4 @@ const Exam = db.define('exam',{
     }
 });
 
-module.exports = ExamDate;
+module.exports = Exam;

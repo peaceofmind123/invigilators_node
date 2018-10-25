@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('invigilators', 'postgres', require('../../secrets').passwordDB, {
+const sequelize = new Sequelize('invigilators', 'postgres', require('../secrets').passwordDB, {
   host: 'localhost',
   dialect: 'postgres',
 
