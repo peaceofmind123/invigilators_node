@@ -15,4 +15,5 @@ const sequelize = new Sequelize('invigilators', 'postgres', require('../secrets'
   operatorsAliases: false
 });
 
+
 module.exports = sequelize;

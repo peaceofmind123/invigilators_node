@@ -11,6 +11,7 @@ const InvigilatorAssignment = require('./invigilatorAssignment');
 const ExamInstance = require('./examInstance');
 const ConductedIn = require('./conductedIn');
 
+//associations
 ExamCenter.hasMany(ExamRoom,{foreignKey:'ec_id',sourceKey:'id'});
 ExamCenter.belongsToMany(Exam,{through:ConductedIn,foreignKey:'ec_id',otherKey:'e_id'});
 ExamCenter.hasMany(ExamInstance,{foreignKey:'ec_id',sourceKey:'id'});
@@ -23,7 +24,21 @@ ExamDate.hasMany(ExamInstance,{foreignKey:'ed_date',sourceKey:'date'});
 ExamRoom.hasMany(ExamInstance,{foreignKey:'er_name',sourceKey:'name'});
 ExamInstance.belongsToMany(Invigilator,{through:InvigilatorAssignment,foreignKey:'ei_id',otherKey:'i_dob'});
 Invigilator.belongsToMany(ExamInstance,{through:InvigilatorAssignment,foreignKey:'i_dob',otherKey:'ei_id'});
+
+//the queryInterface singleton
+const queryInterface = db.getQueryInterface();
+
+//constraints
+queryInterface.addConstraint('ExamInstances',['es_name','ed_date','ec_id','er_name'],{
+    type:'unique',
+    name:'examinstance_superkey'
+});
+
+
+
+//apply migration -- need be done only once in production
 db.sync();
+
 module.exports = {
     ExamCenter:ExamCenter,
     Exam:Exam,
