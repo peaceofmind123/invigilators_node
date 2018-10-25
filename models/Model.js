@@ -34,6 +34,11 @@ queryInterface.addConstraint('ExamInstances',['es_name','ed_date','ec_id','er_na
     name:'examinstance_superkey'
 });
 
+queryInterface.addConstraint('ExamCenters',['title','address'],{
+    type:'unique',
+    name:'examcenter_superkey'
+});
+
 queryInterface.addConstraint('Exam',['title'],{
     type:'unique',
     name:'exam_superkey'
@@ -45,6 +50,7 @@ queryInterface.addConstraint('ExamShifts',['startTime'],{
         [Op.lt]:db.col('endTime');
     }
 })
+
 
 //apply migration -- need be done only once in production
 db.sync();

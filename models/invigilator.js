@@ -10,6 +10,10 @@ const Invigilator = db.define('invigilator',{
     dob: {
         type:Sequelize.DATE,
         primaryKey:true
+    },
+    post:{
+        type:Sequelize.STRING,
+        
     }
 });
 
