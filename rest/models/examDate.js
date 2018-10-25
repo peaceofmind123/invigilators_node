@@ -8,7 +8,10 @@ examCenters = models.ManyToManyField(ExamCenter,related_name="dates")
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const ExamDate = db.define('examDate',{
-    date: Sequelize.DATE
+    date: {
+        type:Sequelize.DATE,
+        primaryKey:true, //actually a partial key
+        }   
 });
 
 module.exports = ExamDate;

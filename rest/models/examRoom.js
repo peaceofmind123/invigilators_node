@@ -8,7 +8,10 @@ examCenter = models.ForeignKey(ExamCenter,on_delete=models.CASCADE,related_name=
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const ExamRoom = db.define('examRoom',{
-    name: Sequelize.STRING,
+    name: {
+        type:Sequelize.STRING,
+        primaryKey:true, // actually a partial key
+    },
     capacity: Sequelize.INTEGER
 });
 

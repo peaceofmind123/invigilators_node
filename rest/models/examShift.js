@@ -7,6 +7,10 @@ endTime = models.TimeField()
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const ExamShift = db.define('examShift',{
+    name:{
+        type:Sequelize.STRING,
+        primaryKey:true, //actually a partial key
+    },
     startTime:Sequelize.TIME,
     endTime: Sequelize.TIME
 });

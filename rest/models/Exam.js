@@ -4,7 +4,11 @@ examCenters = models.ManyToManyField(ExamCenter,related_name="exams")
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const Exam = db.define('exam',{
-    title:Sequelize.STRING
+    title:{
+        type:Sequelize.STRING,
+        primaryKey:true
+    
+    }
 });
 
 module.exports = ExamDate;

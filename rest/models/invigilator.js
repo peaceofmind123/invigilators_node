@@ -7,7 +7,10 @@ const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const Invigilator = db.define('invigilator',{
     name: Sequelize.STRING,
-    dob: Sequelize.DATE
+    dob: {
+        type:Sequelize.DATE,
+        primaryKey:true
+    }
 });
 
 module.exports = Invigilator;

@@ -5,7 +5,14 @@
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const ExamCenter = db.define('examCenter',{
-    title: Sequelize.STRING
+    title:{
+        type:Sequelize.STRING,
+        primaryKey:true
+    },
+    address:{
+        type:Sequelize.STRING,
+        primaryKey:true
+    }
 });
 
 module.exports = ExamCenter;
