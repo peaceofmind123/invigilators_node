@@ -10,7 +10,7 @@ const Invigilator = require('./invigilator');
 const InvigilatorAssignment = require('./invigilatorAssignment');
 const ExamInstance = require('./examInstance');
 const ConductedIn = require('./conductedIn');
-
+const Op = Sequelize.Op;
 //associations
 ExamCenter.hasMany(ExamRoom,{foreignKey:'ec_id',sourceKey:'id'});
 ExamCenter.belongsToMany(Exam,{through:ConductedIn,foreignKey:'ec_id',otherKey:'e_id'});
@@ -34,7 +34,17 @@ queryInterface.addConstraint('ExamInstances',['es_name','ed_date','ec_id','er_na
     name:'examinstance_superkey'
 });
 
+queryInterface.addConstraint('Exam',['title'],{
+    type:'unique',
+    name:'exam_superkey'
+});
 
+queryInterface.addConstraint('ExamShifts',['startTime'],{
+    type:'check',
+    where: {
+        [Op.lt]:db.col('endTime');
+    }
+})
 
 //apply migration -- need be done only once in production
 db.sync();
