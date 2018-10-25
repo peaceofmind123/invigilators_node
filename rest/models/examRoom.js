@@ -10,7 +10,11 @@ const Sequelize = require('sequelize');
 const ExamRoom = db.define('examRoom',{
     name: {
         type:Sequelize.STRING,
-        primaryKey:true, // actually a partial key
+        primaryKey:true, 
+    },
+    ec_id:{
+        type:Sequelize.UUID,
+        primaryKey:true
     },
     capacity: Sequelize.INTEGER
 });

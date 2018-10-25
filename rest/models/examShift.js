@@ -9,7 +9,11 @@ const Sequelize = require('sequelize');
 const ExamShift = db.define('examShift',{
     name:{
         type:Sequelize.STRING,
-        primaryKey:true, //actually a partial key
+        primaryKey:true,
+    },
+    e_id:{
+        type:Sequelize.UUID,
+        primaryKey:true    
     },
     startTime:Sequelize.TIME,
     endTime: Sequelize.TIME

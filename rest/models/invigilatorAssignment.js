@@ -10,7 +10,14 @@
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const InvigilatorAssignment = db.define('invigilatorAssignment',{
-
+        i_dob:{
+            type:Sequelize.DATE,
+            primaryKey:true
+        },
+        ei_id:{
+            type:Sequelize.UUID,
+            primaryKey:true
+        }
 });
 
 module.exports = InvigilatorAssignment;

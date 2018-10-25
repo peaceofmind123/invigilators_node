@@ -4,10 +4,10 @@ examCenters = models.ManyToManyField(ExamCenter,related_name="exams")
 const db = require('./sequelize-db');
 const Sequelize = require('sequelize');
 const Exam = db.define('exam',{
-    title:{
-        type:Sequelize.STRING,
+    title:Sequelize.STRING,
+    id: {
+        type:Sequelize.UUID,
         primaryKey:true
-    
     }
 });
 
