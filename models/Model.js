@@ -29,25 +29,27 @@ Invigilator.belongsToMany(ExamInstance,{through:InvigilatorAssignment,foreignKey
 const queryInterface = db.getQueryInterface();
 
 //constraints
-queryInterface.addConstraint('ExamInstances',['es_name','ed_date','ec_id','er_name'],{
+queryInterface.addConstraint('examInstances',['es_name','ed_date','ec_id','er_name'],{
     type:'unique',
     name:'examinstance_superkey'
 });
 
-queryInterface.addConstraint('ExamCenters',['title','address'],{
+queryInterface.addConstraint('examCenters',['title','address'],{
     type:'unique',
     name:'examcenter_superkey'
 });
 
-queryInterface.addConstraint('Exam',['title'],{
+queryInterface.addConstraint('exams',['title'],{
     type:'unique',
     name:'exam_superkey'
 });
 
-queryInterface.addConstraint('ExamShifts',['startTime'],{
+queryInterface.addConstraint('examShifts',['startTime','endTime'],{
     type:'check',
     where: {
-        [Op.lt]:db.col('endTime');
+        startTime: {
+            [Op.lte]:db.col('endTime')
+        }
     }
 })
 
