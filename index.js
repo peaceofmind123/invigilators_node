@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const app = express();
-const restRouter = require('./rest/router');
+const backendController = require('./backend_controllers/mainController');
 const path = require('path');
 app.set('port',process.env.PORT || 8000);
 
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname,'frontend','dist','frontend')));
 
-app.use('/api',restRouter);
+app.use('/api',backendController);
 
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'frontend','dist','frontend/index.html'));

@@ -1,5 +1,5 @@
 const express = require('express'); 
-const Model = require('./models/Model');
+const Model = require('../domain/models/Model');
 const Sequelize = require('sequelize');
 const uuid = require('uuid/v4');
 let router = express.Router();
