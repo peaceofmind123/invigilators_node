@@ -1,0 +1,12 @@
+<table class="table table-hover table-responsive">
+  <thead class="thead-dark">
+  <tr>
+    <th>Invigilators' Database</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let heading of headings">
+  <tr *ngIf="heading">
+    <td>{{heading}}</td>
+  </tr>
+  </tbody>
+</table>
