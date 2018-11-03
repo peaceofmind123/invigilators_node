@@ -55,7 +55,7 @@ queryInterface.addConstraint('examShifts',['startTime','endTime'],{
 
 
 //apply migration -- need be done only once in production
-db.sync();
+//db.sync();
 
 module.exports = {
     ExamCenter:ExamCenter,
